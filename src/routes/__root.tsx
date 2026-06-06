@@ -130,10 +130,17 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const hydrateTheme = useApp((s) => s.hydrateTheme);
+
+  useEffect(() => {
+    hydrateTheme();
+  }, [hydrateTheme]);
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <PhoneFrame>
+        <Outlet />
+      </PhoneFrame>
     </QueryClientProvider>
   );
 }
