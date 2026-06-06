@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WalletRouteImport } from './routes/wallet'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SessionsRouteImport } from './routes/sessions'
 import { Route as RegisterRouteImport } from './routes/register'
@@ -33,6 +34,11 @@ import { Route as ConsultantsIdRouteImport } from './routes/consultants.$id'
 const WalletRoute = WalletRouteImport.update({
   id: '/wallet',
   path: '/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/sessions': typeof SessionsRoute
   '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/wallet': typeof WalletRoute
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/sessions': typeof SessionsRoute
   '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/wallet': typeof WalletRoute
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/sessions': typeof SessionsRoute
   '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/wallet': typeof WalletRoute
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
@@ -215,6 +224,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/sessions'
     | '/settings'
+    | '/sitemap.xml'
     | '/wallet'
     | '/consultants/$id'
     | '/designs/$id'
@@ -237,6 +247,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/sessions'
     | '/settings'
+    | '/sitemap.xml'
     | '/wallet'
     | '/consultants/$id'
     | '/designs/$id'
@@ -259,6 +270,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/sessions'
     | '/settings'
+    | '/sitemap.xml'
     | '/wallet'
     | '/consultants/$id'
     | '/designs/$id'
@@ -282,6 +294,7 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   SessionsRoute: typeof SessionsRoute
   SettingsRoute: typeof SettingsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WalletRoute: typeof WalletRoute
   ConsultantsIdRoute: typeof ConsultantsIdRoute
   DesignsIdRoute: typeof DesignsIdRoute
@@ -297,6 +310,13 @@ declare module '@tanstack/react-router' {
       path: '/wallet'
       fullPath: '/wallet'
       preLoaderRoute: typeof WalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -450,6 +470,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   SessionsRoute: SessionsRoute,
   SettingsRoute: SettingsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   WalletRoute: WalletRoute,
   ConsultantsIdRoute: ConsultantsIdRoute,
   DesignsIdRoute: DesignsIdRoute,
