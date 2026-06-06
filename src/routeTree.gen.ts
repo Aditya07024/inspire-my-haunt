@@ -17,6 +17,7 @@ import { Route as HomeRouteImport } from './routes/home'
 import { Route as GenerateRouteImport } from './routes/generate'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DesignsIndexRouteImport } from './routes/designs.index'
 import { Route as DesignsResultRouteImport } from './routes/designs.result'
 
 const RegisterRoute = RegisterRouteImport.update({
@@ -59,6 +60,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DesignsIndexRoute = DesignsIndexRouteImport.update({
+  id: '/designs/',
+  path: '/designs/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DesignsResultRoute = DesignsResultRouteImport.update({
   id: '/designs/result',
   path: '/designs/result',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/otp': typeof OtpRoute
   '/register': typeof RegisterRoute
   '/designs/result': typeof DesignsResultRoute
+  '/designs/': typeof DesignsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/otp': typeof OtpRoute
   '/register': typeof RegisterRoute
   '/designs/result': typeof DesignsResultRoute
+  '/designs': typeof DesignsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/otp': typeof OtpRoute
   '/register': typeof RegisterRoute
   '/designs/result': typeof DesignsResultRoute
+  '/designs/': typeof DesignsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/otp'
     | '/register'
     | '/designs/result'
+    | '/designs/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/otp'
     | '/register'
     | '/designs/result'
+    | '/designs'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/otp'
     | '/register'
     | '/designs/result'
+    | '/designs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +157,7 @@ export interface RootRouteChildren {
   OtpRoute: typeof OtpRoute
   RegisterRoute: typeof RegisterRoute
   DesignsResultRoute: typeof DesignsResultRoute
+  DesignsIndexRoute: typeof DesignsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -205,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/designs/': {
+      id: '/designs/'
+      path: '/designs'
+      fullPath: '/designs/'
+      preLoaderRoute: typeof DesignsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/designs/result': {
       id: '/designs/result'
       path: '/designs/result'
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   OtpRoute: OtpRoute,
   RegisterRoute: RegisterRoute,
   DesignsResultRoute: DesignsResultRoute,
+  DesignsIndexRoute: DesignsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
