@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WalletRouteImport } from './routes/wallet'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as OtpRouteImport } from './routes/otp'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
@@ -24,6 +25,11 @@ import { Route as DesignsResultRouteImport } from './routes/designs.result'
 import { Route as DesignsIdRouteImport } from './routes/designs.$id'
 import { Route as ConsultantsIdRouteImport } from './routes/consultants.$id'
 
+const WalletRoute = WalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/otp': typeof OtpRoute
   '/register': typeof RegisterRoute
+  '/wallet': typeof WalletRoute
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/otp': typeof OtpRoute
   '/register': typeof RegisterRoute
+  '/wallet': typeof WalletRoute
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
@@ -138,6 +146,7 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/otp': typeof OtpRoute
   '/register': typeof RegisterRoute
+  '/wallet': typeof WalletRoute
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
@@ -156,6 +165,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/otp'
     | '/register'
+    | '/wallet'
     | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
@@ -172,6 +182,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/otp'
     | '/register'
+    | '/wallet'
     | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
@@ -188,6 +199,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/otp'
     | '/register'
+    | '/wallet'
     | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
@@ -205,6 +217,7 @@ export interface RootRouteChildren {
   OnboardingRoute: typeof OnboardingRoute
   OtpRoute: typeof OtpRoute
   RegisterRoute: typeof RegisterRoute
+  WalletRoute: typeof WalletRoute
   ConsultantsIdRoute: typeof ConsultantsIdRoute
   DesignsIdRoute: typeof DesignsIdRoute
   DesignsResultRoute: typeof DesignsResultRoute
@@ -214,6 +227,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/wallet': {
+      id: '/wallet'
+      path: '/wallet'
+      fullPath: '/wallet'
+      preLoaderRoute: typeof WalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
@@ -325,6 +345,7 @@ const rootRouteChildren: RootRouteChildren = {
   OnboardingRoute: OnboardingRoute,
   OtpRoute: OtpRoute,
   RegisterRoute: RegisterRoute,
+  WalletRoute: WalletRoute,
   ConsultantsIdRoute: ConsultantsIdRoute,
   DesignsIdRoute: DesignsIdRoute,
   DesignsResultRoute: DesignsResultRoute,
