@@ -18,6 +18,7 @@ import { Route as GenerateRouteImport } from './routes/generate'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DesignsIndexRouteImport } from './routes/designs.index'
+import { Route as ConsultantsIndexRouteImport } from './routes/consultants.index'
 import { Route as DesignsResultRouteImport } from './routes/designs.result'
 import { Route as DesignsIdRouteImport } from './routes/designs.$id'
 
@@ -66,6 +67,11 @@ const DesignsIndexRoute = DesignsIndexRouteImport.update({
   path: '/designs/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsultantsIndexRoute = ConsultantsIndexRouteImport.update({
+  id: '/consultants/',
+  path: '/consultants/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DesignsResultRoute = DesignsResultRouteImport.update({
   id: '/designs/result',
   path: '/designs/result',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
+  '/consultants/': typeof ConsultantsIndexRoute
   '/designs/': typeof DesignsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
+  '/consultants': typeof ConsultantsIndexRoute
   '/designs': typeof DesignsIndexRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
+  '/consultants/': typeof ConsultantsIndexRoute
   '/designs/': typeof DesignsIndexRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/designs/$id'
     | '/designs/result'
+    | '/consultants/'
     | '/designs/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/designs/$id'
     | '/designs/result'
+    | '/consultants'
     | '/designs'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/designs/$id'
     | '/designs/result'
+    | '/consultants/'
     | '/designs/'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   RegisterRoute: typeof RegisterRoute
   DesignsIdRoute: typeof DesignsIdRoute
   DesignsResultRoute: typeof DesignsResultRoute
+  ConsultantsIndexRoute: typeof ConsultantsIndexRoute
   DesignsIndexRoute: typeof DesignsIndexRoute
 }
 
@@ -238,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DesignsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consultants/': {
+      id: '/consultants/'
+      path: '/consultants'
+      fullPath: '/consultants/'
+      preLoaderRoute: typeof ConsultantsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/designs/result': {
       id: '/designs/result'
       path: '/designs/result'
@@ -266,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   RegisterRoute: RegisterRoute,
   DesignsIdRoute: DesignsIdRoute,
   DesignsResultRoute: DesignsResultRoute,
+  ConsultantsIndexRoute: ConsultantsIndexRoute,
   DesignsIndexRoute: DesignsIndexRoute,
 }
 export const routeTree = rootRouteImport
