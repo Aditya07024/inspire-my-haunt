@@ -15,6 +15,7 @@ import { Route as ReferralRouteImport } from './routes/referral'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as OtpRouteImport } from './routes/otp'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as GenerateRouteImport } from './routes/generate'
@@ -55,6 +56,11 @@ const OtpRoute = OtpRouteImport.update({
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -120,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/generate': typeof GenerateRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/otp': typeof OtpRoute
   '/profile': typeof ProfileRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/generate': typeof GenerateRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/otp': typeof OtpRoute
   '/profile': typeof ProfileRoute
@@ -159,6 +167,7 @@ export interface FileRoutesById {
   '/generate': typeof GenerateRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/onboarding': typeof OnboardingRoute
   '/otp': typeof OtpRoute
   '/profile': typeof ProfileRoute
@@ -180,6 +189,7 @@ export interface FileRouteTypes {
     | '/generate'
     | '/home'
     | '/login'
+    | '/notifications'
     | '/onboarding'
     | '/otp'
     | '/profile'
@@ -199,6 +209,7 @@ export interface FileRouteTypes {
     | '/generate'
     | '/home'
     | '/login'
+    | '/notifications'
     | '/onboarding'
     | '/otp'
     | '/profile'
@@ -218,6 +229,7 @@ export interface FileRouteTypes {
     | '/generate'
     | '/home'
     | '/login'
+    | '/notifications'
     | '/onboarding'
     | '/otp'
     | '/profile'
@@ -238,6 +250,7 @@ export interface RootRouteChildren {
   GenerateRoute: typeof GenerateRoute
   HomeRoute: typeof HomeRoute
   LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
   OnboardingRoute: typeof OnboardingRoute
   OtpRoute: typeof OtpRoute
   ProfileRoute: typeof ProfileRoute
@@ -293,6 +306,13 @@ declare module '@tanstack/react-router' {
       path: '/onboarding'
       fullPath: '/onboarding'
       preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -382,6 +402,7 @@ const rootRouteChildren: RootRouteChildren = {
   GenerateRoute: GenerateRoute,
   HomeRoute: HomeRoute,
   LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
   OnboardingRoute: OnboardingRoute,
   OtpRoute: OtpRoute,
   ProfileRoute: ProfileRoute,
