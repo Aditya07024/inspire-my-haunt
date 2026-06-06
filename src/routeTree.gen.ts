@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WalletRouteImport } from './routes/wallet'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ReferralRouteImport } from './routes/referral'
 import { Route as ProfileRouteImport } from './routes/profile'
@@ -31,6 +32,11 @@ import { Route as ConsultantsIdRouteImport } from './routes/consultants.$id'
 const WalletRoute = WalletRouteImport.update({
   id: '/wallet',
   path: '/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -132,6 +138,7 @@ export interface FileRoutesByFullPath {
   '/profile': typeof ProfileRoute
   '/referral': typeof ReferralRoute
   '/register': typeof RegisterRoute
+  '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
@@ -152,6 +159,7 @@ export interface FileRoutesByTo {
   '/profile': typeof ProfileRoute
   '/referral': typeof ReferralRoute
   '/register': typeof RegisterRoute
+  '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
@@ -173,6 +181,7 @@ export interface FileRoutesById {
   '/profile': typeof ProfileRoute
   '/referral': typeof ReferralRoute
   '/register': typeof RegisterRoute
+  '/settings': typeof SettingsRoute
   '/wallet': typeof WalletRoute
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
@@ -195,6 +204,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/referral'
     | '/register'
+    | '/settings'
     | '/wallet'
     | '/consultants/$id'
     | '/designs/$id'
@@ -215,6 +225,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/referral'
     | '/register'
+    | '/settings'
     | '/wallet'
     | '/consultants/$id'
     | '/designs/$id'
@@ -235,6 +246,7 @@ export interface FileRouteTypes {
     | '/profile'
     | '/referral'
     | '/register'
+    | '/settings'
     | '/wallet'
     | '/consultants/$id'
     | '/designs/$id'
@@ -256,6 +268,7 @@ export interface RootRouteChildren {
   ProfileRoute: typeof ProfileRoute
   ReferralRoute: typeof ReferralRoute
   RegisterRoute: typeof RegisterRoute
+  SettingsRoute: typeof SettingsRoute
   WalletRoute: typeof WalletRoute
   ConsultantsIdRoute: typeof ConsultantsIdRoute
   DesignsIdRoute: typeof DesignsIdRoute
@@ -271,6 +284,13 @@ declare module '@tanstack/react-router' {
       path: '/wallet'
       fullPath: '/wallet'
       preLoaderRoute: typeof WalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -408,6 +428,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProfileRoute: ProfileRoute,
   ReferralRoute: ReferralRoute,
   RegisterRoute: RegisterRoute,
+  SettingsRoute: SettingsRoute,
   WalletRoute: WalletRoute,
   ConsultantsIdRoute: ConsultantsIdRoute,
   DesignsIdRoute: DesignsIdRoute,
