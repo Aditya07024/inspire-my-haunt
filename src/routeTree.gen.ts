@@ -21,6 +21,7 @@ import { Route as DesignsIndexRouteImport } from './routes/designs.index'
 import { Route as ConsultantsIndexRouteImport } from './routes/consultants.index'
 import { Route as DesignsResultRouteImport } from './routes/designs.result'
 import { Route as DesignsIdRouteImport } from './routes/designs.$id'
+import { Route as ConsultantsIdRouteImport } from './routes/consultants.$id'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -82,6 +83,11 @@ const DesignsIdRoute = DesignsIdRouteImport.update({
   path: '/designs/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsultantsIdRoute = ConsultantsIdRouteImport.update({
+  id: '/consultants/$id',
+  path: '/consultants/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/otp': typeof OtpRoute
   '/register': typeof RegisterRoute
+  '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
   '/consultants/': typeof ConsultantsIndexRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/otp': typeof OtpRoute
   '/register': typeof RegisterRoute
+  '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
   '/consultants': typeof ConsultantsIndexRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/otp': typeof OtpRoute
   '/register': typeof RegisterRoute
+  '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
   '/consultants/': typeof ConsultantsIndexRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/otp'
     | '/register'
+    | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
     | '/consultants/'
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/otp'
     | '/register'
+    | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
     | '/consultants'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/otp'
     | '/register'
+    | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
     | '/consultants/'
@@ -180,6 +192,7 @@ export interface RootRouteChildren {
   OnboardingRoute: typeof OnboardingRoute
   OtpRoute: typeof OtpRoute
   RegisterRoute: typeof RegisterRoute
+  ConsultantsIdRoute: typeof ConsultantsIdRoute
   DesignsIdRoute: typeof DesignsIdRoute
   DesignsResultRoute: typeof DesignsResultRoute
   ConsultantsIndexRoute: typeof ConsultantsIndexRoute
@@ -272,6 +285,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DesignsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consultants/$id': {
+      id: '/consultants/$id'
+      path: '/consultants/$id'
+      fullPath: '/consultants/$id'
+      preLoaderRoute: typeof ConsultantsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -284,6 +304,7 @@ const rootRouteChildren: RootRouteChildren = {
   OnboardingRoute: OnboardingRoute,
   OtpRoute: OtpRoute,
   RegisterRoute: RegisterRoute,
+  ConsultantsIdRoute: ConsultantsIdRoute,
   DesignsIdRoute: DesignsIdRoute,
   DesignsResultRoute: DesignsResultRoute,
   ConsultantsIndexRoute: ConsultantsIndexRoute,
