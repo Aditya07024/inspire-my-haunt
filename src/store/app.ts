@@ -47,6 +47,8 @@ export const useApp = create<AppState>((set, get) => ({
     } catch {
       /* ignore */
     }
+    if (window.location.pathname.startsWith("/frontend")) t = "light";
+    applyTheme(t);
     set({ theme: t });
   },
 

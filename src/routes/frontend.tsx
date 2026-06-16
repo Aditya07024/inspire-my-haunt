@@ -1,5 +1,5 @@
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, Sparkles, X } from "lucide-react";
 
 export const Route = createFileRoute("/frontend")({
@@ -14,6 +14,11 @@ const nav = [
 
 function FrontendLayout() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.remove("dark");
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
