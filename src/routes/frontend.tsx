@@ -1,5 +1,5 @@
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, Sparkles, X } from "lucide-react";
 
 export const Route = createFileRoute("/frontend")({
