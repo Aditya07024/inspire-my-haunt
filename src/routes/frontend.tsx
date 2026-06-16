@@ -14,7 +14,10 @@ const nav = [
 
 function FrontendLayout() {
   const [open, setOpen] = useState(false);
-  return (
+
+  useEffect(() => {
+    document.documentElement.classList.remove("dark");
+  }, []);
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
