@@ -29,6 +29,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as FrontendIndexRouteImport } from './routes/frontend.index'
 import { Route as DesignsIndexRouteImport } from './routes/designs.index'
 import { Route as ConsultantsIndexRouteImport } from './routes/consultants.index'
+import { Route as FrontendOnboardingRouteImport } from './routes/frontend.onboarding'
 import { Route as DesignsResultRouteImport } from './routes/designs.result'
 import { Route as DesignsIdRouteImport } from './routes/designs.$id'
 import { Route as ConsultantsIdRouteImport } from './routes/consultants.$id'
@@ -133,6 +134,11 @@ const ConsultantsIndexRoute = ConsultantsIndexRouteImport.update({
   path: '/consultants/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FrontendOnboardingRoute = FrontendOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => FrontendRoute,
+} as any)
 const DesignsResultRoute = DesignsResultRouteImport.update({
   id: '/designs/result',
   path: '/designs/result',
@@ -170,6 +176,7 @@ export interface FileRoutesByFullPath {
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
+  '/frontend/onboarding': typeof FrontendOnboardingRoute
   '/consultants/': typeof ConsultantsIndexRoute
   '/designs/': typeof DesignsIndexRoute
   '/frontend/': typeof FrontendIndexRoute
@@ -194,6 +201,7 @@ export interface FileRoutesByTo {
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
+  '/frontend/onboarding': typeof FrontendOnboardingRoute
   '/consultants': typeof ConsultantsIndexRoute
   '/designs': typeof DesignsIndexRoute
   '/frontend': typeof FrontendIndexRoute
@@ -220,6 +228,7 @@ export interface FileRoutesById {
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
+  '/frontend/onboarding': typeof FrontendOnboardingRoute
   '/consultants/': typeof ConsultantsIndexRoute
   '/designs/': typeof DesignsIndexRoute
   '/frontend/': typeof FrontendIndexRoute
@@ -247,6 +256,7 @@ export interface FileRouteTypes {
     | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
+    | '/frontend/onboarding'
     | '/consultants/'
     | '/designs/'
     | '/frontend/'
@@ -271,6 +281,7 @@ export interface FileRouteTypes {
     | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
+    | '/frontend/onboarding'
     | '/consultants'
     | '/designs'
     | '/frontend'
@@ -296,6 +307,7 @@ export interface FileRouteTypes {
     | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
+    | '/frontend/onboarding'
     | '/consultants/'
     | '/designs/'
     | '/frontend/'
@@ -468,6 +480,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConsultantsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/frontend/onboarding': {
+      id: '/frontend/onboarding'
+      path: '/onboarding'
+      fullPath: '/frontend/onboarding'
+      preLoaderRoute: typeof FrontendOnboardingRouteImport
+      parentRoute: typeof FrontendRoute
+    }
     '/designs/result': {
       id: '/designs/result'
       path: '/designs/result'
@@ -493,10 +512,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface FrontendRouteChildren {
+  FrontendOnboardingRoute: typeof FrontendOnboardingRoute
   FrontendIndexRoute: typeof FrontendIndexRoute
 }
 
 const FrontendRouteChildren: FrontendRouteChildren = {
+  FrontendOnboardingRoute: FrontendOnboardingRoute,
   FrontendIndexRoute: FrontendIndexRoute,
 }
 
