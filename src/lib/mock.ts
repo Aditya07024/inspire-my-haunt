@@ -233,3 +233,87 @@ export const quickActions = [
   { id: "consultants", label: "Consultants", to: "/consultants", icon: "users" },
   { id: "wallet", label: "Wallet", to: "/wallet", icon: "wallet" },
 ];
+
+// ===== Designer-facing website (recruiting + dashboard) mock data =====
+
+export interface DesignerProject {
+  id: string;
+  client: string;
+  clientSeed: string;
+  title: string;
+  room: string;
+  city: string;
+  budget: string;
+  status: "lead" | "in-progress" | "review" | "completed";
+  progress: number;
+  deadline: string;
+  value: number;
+}
+
+export const designerProjects: DesignerProject[] = [
+  { id: "pj1", client: "Aarav Gupta", clientSeed: "client-aarav", title: "3BHK Full Home Makeover", room: "Whole Home", city: "Mumbai", budget: "₹5L+", status: "in-progress", progress: 62, deadline: "Jun 28, 2026", value: 540000 },
+  { id: "pj2", client: "Meera Iyer", clientSeed: "client-meera", title: "Modern Living Room", room: "Living Room", city: "Bengaluru", budget: "₹2L–5L", status: "review", progress: 88, deadline: "Jun 20, 2026", value: 230000 },
+  { id: "pj3", client: "Kabir Khan", clientSeed: "client-kabir", title: "Master Bedroom Redesign", room: "Bedroom", city: "Delhi", budget: "₹50K–2L", status: "lead", progress: 8, deadline: "Jul 10, 2026", value: 120000 },
+  { id: "pj4", client: "Saanvi Rao", clientSeed: "client-saanvi", title: "Kerala Heritage Kitchen", room: "Kitchen", city: "Kochi", budget: "₹2L–5L", status: "in-progress", progress: 41, deadline: "Jul 02, 2026", value: 310000 },
+  { id: "pj5", client: "Dev Malhotra", clientSeed: "client-dev", title: "Compact Studio Apartment", room: "Studio", city: "Pune", budget: "₹50K–2L", status: "completed", progress: 100, deadline: "May 30, 2026", value: 95000 },
+  { id: "pj6", client: "Ishita Bose", clientSeed: "client-ishita", title: "Boho Kids Room", room: "Kids Room", city: "Kolkata", budget: "Under ₹50K", status: "completed", progress: 100, deadline: "May 18, 2026", value: 48000 },
+];
+
+export interface DesignerClient {
+  id: string;
+  name: string;
+  avatarSeed: string;
+  city: string;
+  projects: number;
+  lastActive: string;
+  lifetimeValue: number;
+}
+
+export const designerClients: DesignerClient[] = [
+  { id: "cl1", name: "Aarav Gupta", avatarSeed: "client-aarav", city: "Mumbai", projects: 2, lastActive: "2h ago", lifetimeValue: 720000 },
+  { id: "cl2", name: "Meera Iyer", avatarSeed: "client-meera", city: "Bengaluru", projects: 1, lastActive: "Today", lifetimeValue: 230000 },
+  { id: "cl3", name: "Kabir Khan", avatarSeed: "client-kabir", city: "Delhi", projects: 1, lastActive: "Yesterday", lifetimeValue: 120000 },
+  { id: "cl4", name: "Saanvi Rao", avatarSeed: "client-saanvi", city: "Kochi", projects: 3, lastActive: "3d ago", lifetimeValue: 640000 },
+  { id: "cl5", name: "Dev Malhotra", avatarSeed: "client-dev", city: "Pune", projects: 1, lastActive: "1w ago", lifetimeValue: 95000 },
+];
+
+export const designerStats = [
+  { label: "Active Projects", value: "4", icon: "projects", trend: "+2 this month" },
+  { label: "Total Clients", value: "27", icon: "clients", trend: "+5 this month" },
+  { label: "Revenue (FY)", value: "₹18.6L", icon: "revenue", trend: "+34%" },
+  { label: "Avg. Rating", value: "4.9", icon: "rating", trend: "214 reviews" },
+];
+
+export const designerPipeline = [
+  { stage: "Leads", count: 6, color: "var(--accent)" },
+  { stage: "In Progress", count: 4, color: "var(--primary)" },
+  { stage: "In Review", count: 2, color: "#6366F1" },
+  { stage: "Completed", count: 15, color: "var(--success)" },
+];
+
+export const designerOnboardingSteps = [
+  { key: "profile", title: "Build your profile", desc: "Add your name, city, specialities and a short bio clients will love." },
+  { key: "portfolio", title: "Upload your portfolio", desc: "Showcase 6–12 of your best projects to win trust instantly." },
+  { key: "expertise", title: "Set your expertise", desc: "Pick the regional & modern styles and room types you master." },
+  { key: "pricing", title: "Set consultation pricing", desc: "Choose your per-session fee and availability." },
+  { key: "verify", title: "Get verified", desc: "Submit ID & credentials to earn the verified designer badge." },
+];
+
+export const recruitBenefits = [
+  { icon: "leads", title: "Qualified leads on tap", desc: "We match you with homeowners actively looking for designers in your city." },
+  { icon: "earnings", title: "Earn on your terms", desc: "Set your own consultation fees and keep up to 85% of every project." },
+  { icon: "ai", title: "AI does the busywork", desc: "Generate mood boards and concepts in seconds so you focus on design." },
+  { icon: "growth", title: "Grow your brand", desc: "A verified profile, reviews and portfolio that gets you discovered." },
+];
+
+export const recruitSteps = [
+  { n: "01", title: "Apply", desc: "Create your designer profile in minutes." },
+  { n: "02", title: "Get verified", desc: "We review your credentials and portfolio." },
+  { n: "03", title: "Start earning", desc: "Receive matched leads and manage projects in one place." },
+];
+
+export const designerTestimonials = [
+  { name: "Priya Sharma", city: "Mumbai", seed: "priya", quote: "MyDesignGhar doubled my bookings in 3 months. The lead quality is unreal." },
+  { name: "Rohan Mehta", city: "Jaipur", seed: "rohan", quote: "The AI mood boards save me hours per client. I just refine and present." },
+  { name: "Ananya Nair", city: "Kochi", seed: "ananya", quote: "Finally a platform built for Indian designers and Indian homes." },
+];
