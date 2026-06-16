@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -131,6 +132,8 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const hydrateTheme = useApp((s) => s.hydrateTheme);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isDesktopSite = pathname.startsWith("/frontend");
 
   useEffect(() => {
     hydrateTheme();
@@ -138,9 +141,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <PhoneFrame>
+      {isDesktopSite ? (
         <Outlet />
-      </PhoneFrame>
+      ) : (
+        <PhoneFrame>
+          <Outlet />
+        </PhoneFrame>
+      )}
     </QueryClientProvider>
   );
 }

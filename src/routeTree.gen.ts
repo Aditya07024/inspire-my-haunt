@@ -22,11 +22,15 @@ import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as GenerateRouteImport } from './routes/generate'
+import { Route as FrontendRouteImport } from './routes/frontend'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as BookingRouteImport } from './routes/booking'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FrontendIndexRouteImport } from './routes/frontend.index'
 import { Route as DesignsIndexRouteImport } from './routes/designs.index'
 import { Route as ConsultantsIndexRouteImport } from './routes/consultants.index'
+import { Route as FrontendOnboardingRouteImport } from './routes/frontend.onboarding'
+import { Route as FrontendDashboardRouteImport } from './routes/frontend.dashboard'
 import { Route as DesignsResultRouteImport } from './routes/designs.result'
 import { Route as DesignsIdRouteImport } from './routes/designs.$id'
 import { Route as ConsultantsIdRouteImport } from './routes/consultants.$id'
@@ -96,6 +100,11 @@ const GenerateRoute = GenerateRouteImport.update({
   path: '/generate',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FrontendRoute = FrontendRouteImport.update({
+  id: '/frontend',
+  path: '/frontend',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   id: '/forgot-password',
   path: '/forgot-password',
@@ -111,6 +120,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FrontendIndexRoute = FrontendIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FrontendRoute,
+} as any)
 const DesignsIndexRoute = DesignsIndexRouteImport.update({
   id: '/designs/',
   path: '/designs/',
@@ -120,6 +134,16 @@ const ConsultantsIndexRoute = ConsultantsIndexRouteImport.update({
   id: '/consultants/',
   path: '/consultants/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const FrontendOnboardingRoute = FrontendOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => FrontendRoute,
+} as any)
+const FrontendDashboardRoute = FrontendDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => FrontendRoute,
 } as any)
 const DesignsResultRoute = DesignsResultRouteImport.update({
   id: '/designs/result',
@@ -141,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/booking': typeof BookingRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/frontend': typeof FrontendRouteWithChildren
   '/generate': typeof GenerateRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
@@ -157,8 +182,11 @@ export interface FileRoutesByFullPath {
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
+  '/frontend/dashboard': typeof FrontendDashboardRoute
+  '/frontend/onboarding': typeof FrontendOnboardingRoute
   '/consultants/': typeof ConsultantsIndexRoute
   '/designs/': typeof DesignsIndexRoute
+  '/frontend/': typeof FrontendIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -180,14 +208,18 @@ export interface FileRoutesByTo {
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
+  '/frontend/dashboard': typeof FrontendDashboardRoute
+  '/frontend/onboarding': typeof FrontendOnboardingRoute
   '/consultants': typeof ConsultantsIndexRoute
   '/designs': typeof DesignsIndexRoute
+  '/frontend': typeof FrontendIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/booking': typeof BookingRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/frontend': typeof FrontendRouteWithChildren
   '/generate': typeof GenerateRoute
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
@@ -204,8 +236,11 @@ export interface FileRoutesById {
   '/consultants/$id': typeof ConsultantsIdRoute
   '/designs/$id': typeof DesignsIdRoute
   '/designs/result': typeof DesignsResultRoute
+  '/frontend/dashboard': typeof FrontendDashboardRoute
+  '/frontend/onboarding': typeof FrontendOnboardingRoute
   '/consultants/': typeof ConsultantsIndexRoute
   '/designs/': typeof DesignsIndexRoute
+  '/frontend/': typeof FrontendIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -213,6 +248,7 @@ export interface FileRouteTypes {
     | '/'
     | '/booking'
     | '/forgot-password'
+    | '/frontend'
     | '/generate'
     | '/home'
     | '/login'
@@ -229,8 +265,11 @@ export interface FileRouteTypes {
     | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
+    | '/frontend/dashboard'
+    | '/frontend/onboarding'
     | '/consultants/'
     | '/designs/'
+    | '/frontend/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -252,13 +291,17 @@ export interface FileRouteTypes {
     | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
+    | '/frontend/dashboard'
+    | '/frontend/onboarding'
     | '/consultants'
     | '/designs'
+    | '/frontend'
   id:
     | '__root__'
     | '/'
     | '/booking'
     | '/forgot-password'
+    | '/frontend'
     | '/generate'
     | '/home'
     | '/login'
@@ -275,14 +318,18 @@ export interface FileRouteTypes {
     | '/consultants/$id'
     | '/designs/$id'
     | '/designs/result'
+    | '/frontend/dashboard'
+    | '/frontend/onboarding'
     | '/consultants/'
     | '/designs/'
+    | '/frontend/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookingRoute: typeof BookingRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
+  FrontendRoute: typeof FrontendRouteWithChildren
   GenerateRoute: typeof GenerateRoute
   HomeRoute: typeof HomeRoute
   LoginRoute: typeof LoginRoute
@@ -396,6 +443,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GenerateRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/frontend': {
+      id: '/frontend'
+      path: '/frontend'
+      fullPath: '/frontend'
+      preLoaderRoute: typeof FrontendRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/forgot-password': {
       id: '/forgot-password'
       path: '/forgot-password'
@@ -417,6 +471,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/frontend/': {
+      id: '/frontend/'
+      path: '/'
+      fullPath: '/frontend/'
+      preLoaderRoute: typeof FrontendIndexRouteImport
+      parentRoute: typeof FrontendRoute
+    }
     '/designs/': {
       id: '/designs/'
       path: '/designs'
@@ -430,6 +491,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/consultants/'
       preLoaderRoute: typeof ConsultantsIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/frontend/onboarding': {
+      id: '/frontend/onboarding'
+      path: '/onboarding'
+      fullPath: '/frontend/onboarding'
+      preLoaderRoute: typeof FrontendOnboardingRouteImport
+      parentRoute: typeof FrontendRoute
+    }
+    '/frontend/dashboard': {
+      id: '/frontend/dashboard'
+      path: '/dashboard'
+      fullPath: '/frontend/dashboard'
+      preLoaderRoute: typeof FrontendDashboardRouteImport
+      parentRoute: typeof FrontendRoute
     }
     '/designs/result': {
       id: '/designs/result'
@@ -455,10 +530,27 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface FrontendRouteChildren {
+  FrontendDashboardRoute: typeof FrontendDashboardRoute
+  FrontendOnboardingRoute: typeof FrontendOnboardingRoute
+  FrontendIndexRoute: typeof FrontendIndexRoute
+}
+
+const FrontendRouteChildren: FrontendRouteChildren = {
+  FrontendDashboardRoute: FrontendDashboardRoute,
+  FrontendOnboardingRoute: FrontendOnboardingRoute,
+  FrontendIndexRoute: FrontendIndexRoute,
+}
+
+const FrontendRouteWithChildren = FrontendRoute._addFileChildren(
+  FrontendRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookingRoute: BookingRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
+  FrontendRoute: FrontendRouteWithChildren,
   GenerateRoute: GenerateRoute,
   HomeRoute: HomeRoute,
   LoginRoute: LoginRoute,
@@ -481,13 +573,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
