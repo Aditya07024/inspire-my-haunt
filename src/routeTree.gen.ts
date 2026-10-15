@@ -9,105 +9,35 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WalletRouteImport } from './routes/wallet'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as SessionsRouteImport } from './routes/sessions'
-import { Route as RegisterRouteImport } from './routes/register'
-import { Route as ReferralRouteImport } from './routes/referral'
-import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as OtpRouteImport } from './routes/otp'
-import { Route as OnboardingRouteImport } from './routes/onboarding'
-import { Route as NotificationsRouteImport } from './routes/notifications'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as HomeRouteImport } from './routes/home'
-import { Route as GenerateRouteImport } from './routes/generate'
-import { Route as FrontendRouteImport } from './routes/frontend'
-import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
-import { Route as BookingRouteImport } from './routes/booking'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as FrontendIndexRouteImport } from './routes/frontend.index'
-import { Route as DesignsIndexRouteImport } from './routes/designs.index'
+import { Route as BookingRouteImport } from './routes/booking'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as FrontendRouteImport } from './routes/frontend'
+import { Route as GenerateRouteImport } from './routes/generate'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as OtpRouteImport } from './routes/otp'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as ReferralRouteImport } from './routes/referral'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as SessionsRouteImport } from './routes/sessions'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as WalletRouteImport } from './routes/wallet'
 import { Route as ConsultantsIndexRouteImport } from './routes/consultants.index'
-import { Route as FrontendOnboardingRouteImport } from './routes/frontend.onboarding'
-import { Route as FrontendDashboardRouteImport } from './routes/frontend.dashboard'
-import { Route as DesignsResultRouteImport } from './routes/designs.result'
-import { Route as DesignsIdRouteImport } from './routes/designs.$id'
 import { Route as ConsultantsIdRouteImport } from './routes/consultants.$id'
+import { Route as DesignsIndexRouteImport } from './routes/designs.index'
+import { Route as DesignsIdRouteImport } from './routes/designs.$id'
+import { Route as DesignsResultRouteImport } from './routes/designs.result'
+import { Route as FrontendIndexRouteImport } from './routes/frontend.index'
+import { Route as FrontendDashboardRouteImport } from './routes/frontend.dashboard'
+import { Route as FrontendOnboardingRouteImport } from './routes/frontend.onboarding'
 
-const WalletRoute = WalletRouteImport.update({
-  id: '/wallet',
-  path: '/wallet',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SessionsRoute = SessionsRouteImport.update({
-  id: '/sessions',
-  path: '/sessions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RegisterRoute = RegisterRouteImport.update({
-  id: '/register',
-  path: '/register',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ReferralRoute = ReferralRouteImport.update({
-  id: '/referral',
-  path: '/referral',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfileRoute = ProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OtpRoute = OtpRouteImport.update({
-  id: '/otp',
-  path: '/otp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OnboardingRoute = OnboardingRouteImport.update({
-  id: '/onboarding',
-  path: '/onboarding',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NotificationsRoute = NotificationsRouteImport.update({
-  id: '/notifications',
-  path: '/notifications',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HomeRoute = HomeRouteImport.update({
-  id: '/home',
-  path: '/home',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GenerateRoute = GenerateRouteImport.update({
-  id: '/generate',
-  path: '/generate',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FrontendRoute = FrontendRouteImport.update({
-  id: '/frontend',
-  path: '/frontend',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
-  id: '/forgot-password',
-  path: '/forgot-password',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BookingRoute = BookingRouteImport.update({
@@ -115,19 +45,79 @@ const BookingRoute = BookingRouteImport.update({
   path: '/booking',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FrontendIndexRoute = FrontendIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => FrontendRoute,
+const FrontendRoute = FrontendRouteImport.update({
+  id: '/frontend',
+  path: '/frontend',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const DesignsIndexRoute = DesignsIndexRouteImport.update({
-  id: '/designs/',
-  path: '/designs/',
+const GenerateRoute = GenerateRouteImport.update({
+  id: '/generate',
+  path: '/generate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OtpRoute = OtpRouteImport.update({
+  id: '/otp',
+  path: '/otp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferralRoute = ReferralRouteImport.update({
+  id: '/referral',
+  path: '/referral',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SessionsRoute = SessionsRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WalletRoute = WalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConsultantsIndexRoute = ConsultantsIndexRouteImport.update({
@@ -135,19 +125,14 @@ const ConsultantsIndexRoute = ConsultantsIndexRouteImport.update({
   path: '/consultants/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FrontendOnboardingRoute = FrontendOnboardingRouteImport.update({
-  id: '/onboarding',
-  path: '/onboarding',
-  getParentRoute: () => FrontendRoute,
+const ConsultantsIdRoute = ConsultantsIdRouteImport.update({
+  id: '/consultants/$id',
+  path: '/consultants/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const FrontendDashboardRoute = FrontendDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => FrontendRoute,
-} as any)
-const DesignsResultRoute = DesignsResultRouteImport.update({
-  id: '/designs/result',
-  path: '/designs/result',
+const DesignsIndexRoute = DesignsIndexRouteImport.update({
+  id: '/designs/',
+  path: '/designs/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DesignsIdRoute = DesignsIdRouteImport.update({
@@ -155,10 +140,25 @@ const DesignsIdRoute = DesignsIdRouteImport.update({
   path: '/designs/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ConsultantsIdRoute = ConsultantsIdRouteImport.update({
-  id: '/consultants/$id',
-  path: '/consultants/$id',
+const DesignsResultRoute = DesignsResultRouteImport.update({
+  id: '/designs/result',
+  path: '/designs/result',
   getParentRoute: () => rootRouteImport,
+} as any)
+const FrontendIndexRoute = FrontendIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FrontendRoute,
+} as any)
+const FrontendDashboardRoute = FrontendDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => FrontendRoute,
+} as any)
+const FrontendOnboardingRoute = FrontendOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => FrontendRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -352,109 +352,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/wallet': {
-      id: '/wallet'
-      path: '/wallet'
-      fullPath: '/wallet'
-      preLoaderRoute: typeof WalletRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sessions': {
-      id: '/sessions'
-      path: '/sessions'
-      fullPath: '/sessions'
-      preLoaderRoute: typeof SessionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/register': {
-      id: '/register'
-      path: '/register'
-      fullPath: '/register'
-      preLoaderRoute: typeof RegisterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/referral': {
-      id: '/referral'
-      path: '/referral'
-      fullPath: '/referral'
-      preLoaderRoute: typeof ReferralRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/otp': {
-      id: '/otp'
-      path: '/otp'
-      fullPath: '/otp'
-      preLoaderRoute: typeof OtpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/onboarding': {
-      id: '/onboarding'
-      path: '/onboarding'
-      fullPath: '/onboarding'
-      preLoaderRoute: typeof OnboardingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notifications': {
-      id: '/notifications'
-      path: '/notifications'
-      fullPath: '/notifications'
-      preLoaderRoute: typeof NotificationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home': {
-      id: '/home'
-      path: '/home'
-      fullPath: '/home'
-      preLoaderRoute: typeof HomeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/generate': {
-      id: '/generate'
-      path: '/generate'
-      fullPath: '/generate'
-      preLoaderRoute: typeof GenerateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/frontend': {
-      id: '/frontend'
-      path: '/frontend'
-      fullPath: '/frontend'
-      preLoaderRoute: typeof FrontendRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/forgot-password': {
-      id: '/forgot-password'
-      path: '/forgot-password'
-      fullPath: '/forgot-password'
-      preLoaderRoute: typeof ForgotPasswordRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/booking': {
@@ -464,25 +366,109 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BookingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/frontend/': {
-      id: '/frontend/'
-      path: '/'
-      fullPath: '/frontend/'
-      preLoaderRoute: typeof FrontendIndexRouteImport
-      parentRoute: typeof FrontendRoute
+    '/frontend': {
+      id: '/frontend'
+      path: '/frontend'
+      fullPath: '/frontend'
+      preLoaderRoute: typeof FrontendRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/designs/': {
-      id: '/designs/'
-      path: '/designs'
-      fullPath: '/designs/'
-      preLoaderRoute: typeof DesignsIndexRouteImport
+    '/generate': {
+      id: '/generate'
+      path: '/generate'
+      fullPath: '/generate'
+      preLoaderRoute: typeof GenerateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/otp': {
+      id: '/otp'
+      path: '/otp'
+      fullPath: '/otp'
+      preLoaderRoute: typeof OtpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/referral': {
+      id: '/referral'
+      path: '/referral'
+      fullPath: '/referral'
+      preLoaderRoute: typeof ReferralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sessions': {
+      id: '/sessions'
+      path: '/sessions'
+      fullPath: '/sessions'
+      preLoaderRoute: typeof SessionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wallet': {
+      id: '/wallet'
+      path: '/wallet'
+      fullPath: '/wallet'
+      preLoaderRoute: typeof WalletRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/consultants/': {
@@ -492,25 +478,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConsultantsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/frontend/onboarding': {
-      id: '/frontend/onboarding'
-      path: '/onboarding'
-      fullPath: '/frontend/onboarding'
-      preLoaderRoute: typeof FrontendOnboardingRouteImport
-      parentRoute: typeof FrontendRoute
+    '/consultants/$id': {
+      id: '/consultants/$id'
+      path: '/consultants/$id'
+      fullPath: '/consultants/$id'
+      preLoaderRoute: typeof ConsultantsIdRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/frontend/dashboard': {
-      id: '/frontend/dashboard'
-      path: '/dashboard'
-      fullPath: '/frontend/dashboard'
-      preLoaderRoute: typeof FrontendDashboardRouteImport
-      parentRoute: typeof FrontendRoute
-    }
-    '/designs/result': {
-      id: '/designs/result'
-      path: '/designs/result'
-      fullPath: '/designs/result'
-      preLoaderRoute: typeof DesignsResultRouteImport
+    '/designs/': {
+      id: '/designs/'
+      path: '/designs'
+      fullPath: '/designs/'
+      preLoaderRoute: typeof DesignsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/designs/$id': {
@@ -520,12 +499,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DesignsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/consultants/$id': {
-      id: '/consultants/$id'
-      path: '/consultants/$id'
-      fullPath: '/consultants/$id'
-      preLoaderRoute: typeof ConsultantsIdRouteImport
+    '/designs/result': {
+      id: '/designs/result'
+      path: '/designs/result'
+      fullPath: '/designs/result'
+      preLoaderRoute: typeof DesignsResultRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/frontend/': {
+      id: '/frontend/'
+      path: '/'
+      fullPath: '/frontend/'
+      preLoaderRoute: typeof FrontendIndexRouteImport
+      parentRoute: typeof FrontendRoute
+    }
+    '/frontend/dashboard': {
+      id: '/frontend/dashboard'
+      path: '/dashboard'
+      fullPath: '/frontend/dashboard'
+      preLoaderRoute: typeof FrontendDashboardRouteImport
+      parentRoute: typeof FrontendRoute
+    }
+    '/frontend/onboarding': {
+      id: '/frontend/onboarding'
+      path: '/onboarding'
+      fullPath: '/frontend/onboarding'
+      preLoaderRoute: typeof FrontendOnboardingRouteImport
+      parentRoute: typeof FrontendRoute
     }
   }
 }
@@ -573,3 +573,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
